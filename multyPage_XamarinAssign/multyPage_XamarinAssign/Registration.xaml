@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="multyPage_XamarinAssign.Registration">
+    <ContentPage.Content>
+
+        <StackLayout Padding="20"
+            VerticalOptions="Center">
+            <Grid RowDefinitions="*">
+                <Label Text="Welcome to Registration Page!"
+                FontSize="Large"
+                HorizontalOptions="Center" 
+                       Grid.Row="0"/>
+                <Entry x:Name="txtRegUserName"
+                Placeholder="Username"
+                FontSize="Large"
+                Text="{ Binding user.username }"
+                       Grid.Row="2"
+                />
+                <Entry x:Name="txtRegEmail"
+                Placeholder="Email"
+                FontSize="Large"
+                Text="{ Binding user.email }"
+                       Grid.Row="3"
+                />
+                <Entry x:Name="txtRegPassword"
+                Placeholder="Password"
+                FontSize="Large"
+                IsPassword="True"
+                Text="{ Binding user.password }"
+                       Grid.Row="4"
+                />
+                <Button x:Name="btnRegister"
+                Text="Register"
+                BackgroundColor="LightBlue"
+                BorderWidth="0"
+                Clicked="btnRegister_Clicked"
+                FontSize="Small"
+                Grid.Row="6"
+                />
+            </Grid>
+        </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
