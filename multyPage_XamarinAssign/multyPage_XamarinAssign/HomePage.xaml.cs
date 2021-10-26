@@ -22,8 +22,7 @@ namespace multyPage_XamarinAssign
         {
 
             base.OnAppearing();
-            collectionView.ItemsSource
-            = await App.Database.GetPeopleAsync();
+            //collectionView.ItemsSource = await App.Database.GetPeopleAsync();
         }
 
     }
