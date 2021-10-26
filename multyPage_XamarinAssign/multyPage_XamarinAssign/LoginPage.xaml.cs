@@ -1,5 +1,4 @@
-﻿using multyPage_XamarinAssign.Registration;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +22,7 @@ namespace multyPage_XamarinAssign
             string PassWord = txtPassword.Text;
             try { User u = await App.Database.GetItemAsync(PassWord, userName); 
 
-            if (u.Username.Equals(userName) && u.Password.Equals(PassWord))
+            if (u.username.Equals(userName) && u.password.Equals(PassWord))
             {
                 await DisplayAlert("Login result", "Success", "OK");
                 await Navigation.PushAsync(new HomePage());
@@ -37,7 +36,7 @@ namespace multyPage_XamarinAssign
 
         private async void btnReg_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UserRegistration());
+            await Navigation.PushAsync(new Registration());
         }
     }
 }
