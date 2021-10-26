@@ -26,7 +26,7 @@ namespace multyPage_XamarinAssign
         }
         public Task<User> GetItemAsync(string password, string username)
         {
-            return _database.Table<User>().Where(i => i.username == username && i.password == password).FirstOrDefaultAsync();
+            return _database.Table<User>().Where(i => i.Username == username && i.Password == password).FirstOrDefaultAsync();
         }
 
         public Task<int> DeleteItemAsync(User user)

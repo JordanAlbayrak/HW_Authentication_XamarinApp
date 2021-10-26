@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -17,19 +17,43 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="LoginPage.xaml.cs">
+    <Compile Update="List\petList.xaml.cs">
+      <DependentUpon>PetList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="List\vetList.xaml.cs">
+      <DependentUpon>VetList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Login\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Registration\petRegistration.xaml.cs">
+      <DependentUpon>PetRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Registration\vetRegistration.xaml.cs">
+      <DependentUpon>VetRegistration.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="LoginPage.xaml">
+    <EmbeddedResource Update="List\PetList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Registration.xaml">
+    <EmbeddedResource Update="List\VetList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Registration\PetRegistration.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Registration\UserRegistration.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Registration\VetRegistration.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

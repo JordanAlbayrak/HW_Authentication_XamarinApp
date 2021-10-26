@@ -12,7 +12,7 @@
         <Label Text="{Binding username}"
         FontSize="Large"/>
 
-        <!--<CollectionView x:Name="collectionView">
+        <CollectionView x:Name="collectionView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout>
@@ -24,8 +24,8 @@
                         </Grid>
                     </StackLayout>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>-->
-        <!--</CollectionView> -->
+            </CollectionView.ItemTemplate>
+        </CollectionView> 
     </StackLayout>
 
 </ContentPage>
