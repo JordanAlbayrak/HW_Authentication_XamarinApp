@@ -4,9 +4,33 @@
              x:Class="multyPage_XamarinAssign.Registration.petRegistration">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid RowDefinitions="*">
+                <Label Text="Welcome to Pet Registration Page!"
+                FontSize="Large"
+                HorizontalOptions="Center" 
+                       Grid.Row="0"/>
+                <Entry x:Name="txtPetName"
+                Placeholder="Username"
+                FontSize="Large"
+                Text="{ Binding PetName }"
+                       Grid.Row="2"
+                />
+                <Entry x:Name="txtPetType"
+                Placeholder="First Name"
+                FontSize="Large"
+                Text="{ Binding PetType }"
+                       Grid.Row="3"
+                />
+               
+                <Button x:Name="btnRegister"
+                Text="Register"
+                BackgroundColor="LightBlue"
+                BorderWidth="0"
+                Clicked="btnRegister_Clicked"
+                FontSize="Small"
+                Grid.Row="5"
+                />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

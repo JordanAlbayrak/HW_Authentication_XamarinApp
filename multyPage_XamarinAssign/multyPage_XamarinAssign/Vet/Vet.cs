@@ -5,7 +5,7 @@ using SQLite;
 
 namespace multyPage_XamarinAssign.Vet
 {
-    class Vet
+    public class Vet
     {
         [PrimaryKey, AutoIncrement]
         public int VetID { get; set; }

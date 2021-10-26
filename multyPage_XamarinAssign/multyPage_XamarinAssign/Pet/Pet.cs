@@ -5,7 +5,7 @@ using System.Text;
 
 namespace multyPage_XamarinAssign.Pet
 {
-    class Pet
+    public class Pet
     {
         [PrimaryKey, AutoIncrement]
         public int PetID { get; set; }
