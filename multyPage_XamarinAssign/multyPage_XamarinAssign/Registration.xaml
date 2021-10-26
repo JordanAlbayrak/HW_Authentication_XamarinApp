@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="multyPage_XamarinAssign.Registration.UserRegistration">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="multyPage_XamarinAssign.Registration">
     <ContentPage.Content>
+
         <StackLayout Padding="20"
             VerticalOptions="Center">
             <Grid RowDefinitions="*">
@@ -13,40 +14,21 @@
                 <Entry x:Name="txtRegUserName"
                 Placeholder="Username"
                 FontSize="Large"
-                Text="{ Binding Username }"
+                Text="{ Binding user.username }"
                        Grid.Row="2"
-                />
-                <Entry x:Name="txtRegFirst"
-                Placeholder="First Name"
-                FontSize="Large"
-                Text="{ Binding FirstName }"
-                       Grid.Row="3"
-                />
-                <Entry x:Name="txtRegLast"
-                Placeholder="Last Name"
-                FontSize="Large"
-                Text="{ Binding LastName }"
-                       Grid.Row="4"
                 />
                 <Entry x:Name="txtRegEmail"
                 Placeholder="Email"
                 FontSize="Large"
-                Text="{ Binding Email }"
-                       Grid.Row="5"
-                />
-                <Entry x:Name="txtRegPhone"
-                Placeholder="Phone Number"
-                FontSize="Large"
-                Text="{ Binding Phone }"
-                Keyboard="Numeric"
-                Grid.Row="6"
+                Text="{ Binding user.email }"
+                       Grid.Row="3"
                 />
                 <Entry x:Name="txtRegPassword"
                 Placeholder="Password"
                 FontSize="Large"
                 IsPassword="True"
-                Text="{ Binding Password }"
-                       Grid.Row="7"
+                Text="{ Binding user.password }"
+                       Grid.Row="4"
                 />
                 <Button x:Name="btnRegister"
                 Text="Register"
@@ -54,9 +36,9 @@
                 BorderWidth="0"
                 Clicked="btnRegister_Clicked"
                 FontSize="Small"
-                Grid.Row="9"
+                Grid.Row="6"
                 />
             </Grid>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+            </ContentPage.Content>
+        </ContentPage>
