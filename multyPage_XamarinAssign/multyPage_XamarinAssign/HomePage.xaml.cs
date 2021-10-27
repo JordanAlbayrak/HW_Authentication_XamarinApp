@@ -15,15 +15,31 @@ namespace multyPage_XamarinAssign
         {
             InitializeComponent();
 
-
-            OnAppearing();
          }
-        protected override async void OnAppearing()
-        {
 
-            base.OnAppearing();
-            //collectionView.ItemsSource = await App.Database.GetPeopleAsync();
+        async private void btnVet_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new VetRegistration());
         }
 
+        async private void btnPet_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PetRegistration());
+        }
+
+       async private void btnVetList_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new VetList());
+        }
+
+       async private void btnPetList_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PetList());
+        }
+
+        async private void btnLogout_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
+        }
     }
 }

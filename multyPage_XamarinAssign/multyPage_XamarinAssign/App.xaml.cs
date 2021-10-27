@@ -7,14 +7,14 @@ namespace multyPage_XamarinAssign
 {
     public partial class App : Application
     {
-        static userDB database;
-        public static userDB Database
+        static DBPetClinic database;
+        public static DBPetClinic Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new userDB
+                    database = new DBPetClinic
                         (Path.Combine(Environment.GetFolderPath
                         (Environment.SpecialFolder.LocalApplicationData), "user.db3"));
                 }

@@ -4,28 +4,47 @@
              x:Class="multyPage_XamarinAssign.HomePage">
 
     <StackLayout>
+        <Image x:Name="imgPet"  Source="petlogo.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+
         <Label Text="Welcome to Home page!"  
         VerticalOptions="Center"
         HorizontalOptions="Center"
         FontSize="Large"/>
-        
-        <Label Text="{Binding username}"
+        <Label Text="{Binding Username}"
         FontSize="Large"/>
 
-        <!--<CollectionView x:Name="collectionView">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Grid Padding="10" RowDefinitions="Auto, *">
-                            <Label x:Name="userName"  Grid.Row="0" Grid.Column="0" Text="{Binding username}" FontSize="Medium"/>
-                            
-                            <Label Grid.Row="0" Grid.Column="5" Text="{Binding ID}" TextColor="Silver" FontSize="Small"/>
 
-                        </Grid>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>-->
-        <!--</CollectionView> -->
+        <Button x:Name="btnVet"
+                Text="Register a Vet"
+                FontSize="Small"
+                BackgroundColor="LightBlue"
+                Clicked="btnVet_Clicked"
+                Grid.Row="4"/>
+        <Button x:Name="btnVetList"
+                Text="Vet List"
+                FontSize="Small"
+                BackgroundColor="LightBlue"
+                Clicked="btnVetList_Clicked"
+                Grid.Row="6"/>
+        <Button x:Name="btnPet"
+                Text="Register a Pet"
+                FontSize="Small"
+                BackgroundColor="LightBlue"
+                Clicked="btnPet_Clicked"
+                Grid.Row="6"/>
+        <Button x:Name="btnPetList"
+                Text="Pet List"
+                FontSize="Small"
+                BackgroundColor="LightBlue"
+                Clicked="btnPetList_Clicked"
+                Grid.Row="6"/>
+        <Button x:Name="btnLogout"
+                Text="Logout"
+                FontSize="Small"
+                BackgroundColor="LightBlue"
+                Clicked="btnLogout_Clicked"
+                Grid.Row="6"/>
+
     </StackLayout>
 
 </ContentPage>
