@@ -12,13 +12,16 @@ namespace multyPage_XamarinAssign
         public string PetName { get; set; }
         public string PetType { get; set; }
 
-        public string IsValid()
+        public bool IsValid(out string message)
         {
-            if (PetName == null || PetName.Length <= 0) return "Pet Name must be inputed";
+            message = default;
+            if (!string.IsNullOrWhiteSpace(PetName) &&
+                !string.IsNullOrWhiteSpace(PetType))
+            { return true; }
 
-            if (PetType == null || PetType.Length <= 0) return "Pet type must be inputed";
+            message = "Please fill all fields";
 
-            return null;
+            return false;
         }
     }
 

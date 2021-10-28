@@ -24,6 +24,7 @@ namespace multyPage_XamarinAssign
             try
             {
                 User u = await App.Database.GetItemAsync(PassWord, userName);
+                Console.WriteLine(PassWord + "" + userName);
 
                 if (u.Username.Equals(userName) && u.Password.Equals(PassWord))
                 {

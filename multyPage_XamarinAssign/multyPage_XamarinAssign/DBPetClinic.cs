@@ -24,6 +24,7 @@ namespace multyPage_XamarinAssign
         }
         public Task<int> SavePersonAsync(User user)
         {
+
             return _database.InsertAsync(user);
         }
         public Task<User> GetItemAsync(string username, string password)
@@ -45,8 +46,7 @@ namespace multyPage_XamarinAssign
         //Pet
         public Task<List<Pet>> GetPetsAsync()
         {
-            return
-            _database.Table<Pet>().ToListAsync();
+            return _database.Table<Pet>().ToListAsync();
         }
         public Task<int> SavePetAsync(Pet pet)
         {

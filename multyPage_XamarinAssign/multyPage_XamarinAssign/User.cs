@@ -16,21 +16,21 @@ namespace multyPage_XamarinAssign
         public string Phone { get; set; }
         public string Password { get; set; }
 
-        public string IsValid()
+        public bool IsValid(out string message)
         {
-            if (Username == null || Username.Length <= 0) return "Username must be inputed";
+            message = default;
+            if (!string.IsNullOrWhiteSpace(Username) &&
+                !string.IsNullOrWhiteSpace(FirstName) &&
+                !string.IsNullOrWhiteSpace(LastName) &&
+                !string.IsNullOrWhiteSpace(Email) &&
+                !string.IsNullOrWhiteSpace(Phone) &&
+                !string.IsNullOrWhiteSpace(Password) &&
+                Password.Length >= 10)
+            { return true; }
 
-            if (FirstName == null || FirstName.Length <= 0) return "First Name must be inputed";
+            message = "Please fill all fields and the password must be atleast 10 characters.";
 
-            if (LastName == null || LastName.Length <= 0) return "Last Name must be inputed";
-
-            if (Email == null || Email.Length <= 0) return "Email must be inputed";
-
-            if (Phone == null || Phone.Length <= 0) return "Phone number must be inputed";
-
-            if (Password == null || Password.Length < 10) return "Password must be inputed";
-
-            return null;
+            return false;
         }
     }
 }
