@@ -19,14 +19,18 @@ namespace multyPage_XamarinAssign
         }
         private async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            string userName = txtUserName.Text;
-            string PassWord = txtPassword.Text;
+            string username = txtUserName.Text;
+            string password = txtPassword.Text;
             try
             {
-                User u = await App.Database.GetItemAsync(PassWord, userName);
-                Console.WriteLine(PassWord + "" + userName);
+                User u = await App.Database.GetItemAsync(username, password);
+     
 
-                if (u.Username.Equals(userName) && u.Password.Equals(PassWord))
+                Console.WriteLine("UserDatabase = " + u.Username);
+                Console.WriteLine("PasswordDatabase = " + u.Password);
+
+
+                if (u.Username.Equals(username) && u.Password.Equals(password))
                 {
                     await DisplayAlert("Login result", "Success", "OK");
                     await Navigation.PushAsync(new HomePage());
@@ -42,6 +46,11 @@ namespace multyPage_XamarinAssign
         private async void btnReg_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Registration());
+        }
+
+        private async void UserList_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new UserPage());
         }
     }
 }

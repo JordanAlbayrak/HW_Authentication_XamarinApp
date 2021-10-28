@@ -8,7 +8,7 @@ namespace multyPage_XamarinAssign
     public class User
     {
         [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
+        public int UserId { get; set; }
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

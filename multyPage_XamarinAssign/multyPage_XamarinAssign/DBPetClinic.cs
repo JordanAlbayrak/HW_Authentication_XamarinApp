@@ -17,12 +17,12 @@ namespace multyPage_XamarinAssign
             _database.CreateTableAsync<Pet>().Wait();
 
         }
-        public Task<List<User>> GetPeopleAsync()
+        public Task<List<User>> GetAsync()
         {
             return
             _database.Table<User>().ToListAsync();
         }
-        public Task<int> SavePersonAsync(User user)
+        public Task<int> SaveUserAsync(User user)
         {
 
             return _database.InsertAsync(user);
@@ -51,6 +51,11 @@ namespace multyPage_XamarinAssign
         public Task<int> SavePetAsync(Pet pet)
         {
             return _database.InsertAsync(pet);
+        }
+
+        public Task<List<User>> GetUserAsync()
+        {
+            return _database.Table<User>().ToListAsync();
         }
     }
 }

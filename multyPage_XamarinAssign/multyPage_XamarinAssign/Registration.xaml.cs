@@ -44,7 +44,7 @@ namespace multyPage_XamarinAssign
                     Console.WriteLine(_user.Username);
                     Console.WriteLine(_user.Password);
 
-                    await App.Database.SavePersonAsync(_user);
+                    await App.Database.SaveUserAsync(_user);
                     await Navigation.PopAsync();
                 }
 

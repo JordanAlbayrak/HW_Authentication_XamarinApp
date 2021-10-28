@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="multyPage_XamarinAssign.UserPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label FontSize="Large" HorizontalTextAlignment="Center">User List</Label>
+            <BoxView 
+                   HeightRequest="1"
+                   Color="LightGray"
+                   Margin ="40, 0, 40, 0"/>
+
+            <CollectionView x:Name="userCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid Padding="10" RowDefinitions="Auto, *">
+                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="{Binding UserId}" FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Username}"  FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Password}"  FontSize="Small"/>
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

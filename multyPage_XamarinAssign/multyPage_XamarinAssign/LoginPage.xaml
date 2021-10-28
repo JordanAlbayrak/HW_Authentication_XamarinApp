@@ -26,12 +26,20 @@
                     BackgroundColor="LightBlue"
                     Clicked="btnLogin_Clicked"
                         Grid.Row="5"/>
+                
                 <Button x:Name="btnReg"
                 Text="Register"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
                 Clicked="btnReg_Clicked"
                 Grid.Row="6"/>
+                
+                <Button x:Name="UserList"
+                Text="UserList"
+                FontSize="Small"
+                BackgroundColor="LightBlue"
+                Clicked="UserList_Clicked"
+                Grid.Row="7"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
