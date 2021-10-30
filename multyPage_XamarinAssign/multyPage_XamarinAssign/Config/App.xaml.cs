@@ -16,7 +16,7 @@ namespace multyPage_XamarinAssign
                 {
                     database = new DBPetClinic
                         (Path.Combine(Environment.GetFolderPath
-                        (Environment.SpecialFolder.LocalApplicationData), "databaseV1.db3"));
+                        (Environment.SpecialFolder.LocalApplicationData), "databaseV1.2.db3"));
                 }
                 return database;
             }

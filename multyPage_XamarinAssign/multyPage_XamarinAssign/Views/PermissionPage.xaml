@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="multyPage_XamarinAssign.Views.PermissionPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid RowDefinitions="*" Padding="20">
+                <Label Text="Welcome to Registration Page!"
+                FontSize="Large"
+                HorizontalOptions="Center" 
+                       Grid.Row="0"/>
+                <Entry x:Name="txtRegUserName"
+                Placeholder="Username"
+                FontSize="Large"
+                Text="{ Binding User.Username }"
+                       Grid.Row="2"
+                />
+                <Entry x:Name="txtRegFirst"
+                Placeholder="First Name"
+                FontSize="Large"
+                Text="{ Binding User.FirstName }"
+                       Grid.Row="3"
+                />
+                <Entry x:Name="txtRegLast"
+                Placeholder="Last Name"
+                FontSize="Large"
+                Text="{ Binding User.LastName }"
+                       Grid.Row="4"
+                />
+                <Entry x:Name="txtRegEmail"
+                Placeholder="Email"
+                FontSize="Large"
+                Text="{ Binding User.Email }"
+                       Grid.Row="5"
+                />
+                <Entry x:Name="txtRegPhone"
+                Placeholder="Phone Number"
+                FontSize="Large"
+                Text="{ Binding User.Phone }"
+                Keyboard="Numeric"
+                Grid.Row="6"
+                />
+                <Entry x:Name="txtRegPassword"
+                Placeholder="Password"
+                FontSize="Large"
+                IsPassword="True"
+                Text="{ Binding User.Password }"
+                       Grid.Row="7"
+                />
+                <Button x:Name="btnSave"
+                Text="Register"
+                BackgroundColor="LightBlue"
+                BorderWidth="0"
+                Clicked="BtnSave_Clicked"
+                FontSize="Small"
+                Grid.Row="9"
+                />
+            </Grid>
+
+            <Grid Padding="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <CheckBox x:Name="chkRead" Grid.Row="0" Grid.Column="0"/>
+                <Label VerticalTextAlignment="Center" Text="Read" Grid.Row="0" Grid.Column="1"/>
+                <CheckBox x:Name="chkModify" Grid.Row="1" Grid.Column="0"/>
+                <Label VerticalTextAlignment="Center" Text="Modify" Grid.Row="1" Grid.Column="1"></Label>
+                <CheckBox x:Name="chkDelete" Grid.Row="2" Grid.Column="0"/>
+                <Label VerticalTextAlignment="Center" Text="Delete" Grid.Row="2" Grid.Column="1"/>
+            </Grid>
+          
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

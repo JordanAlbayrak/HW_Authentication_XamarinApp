@@ -1,4 +1,5 @@
-﻿using System;
+﻿using multyPage_XamarinAssign.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,12 +11,24 @@ namespace multyPage_XamarinAssign
 {
     public partial class HomePage : ContentPage
     {
+        private readonly User user;
 
-        public HomePage()
+        public HomePage(User user)
         {
             InitializeComponent();
+            this.user = user;
 
-         }
+            if (user.Role == RoleType.Viewer)
+            {
+                btnVetList.IsEnabled = false;
+                btnVet.IsEnabled = false;
+                UserList.IsEnabled = false;
+            }
+            else if (user.Role == RoleType.Intern)
+            {
+                UserList.IsEnabled = false;           
+            }
+        }
 
         async private void btnVet_Clicked(object sender, EventArgs e)
         {
@@ -32,12 +45,17 @@ namespace multyPage_XamarinAssign
             await Navigation.PushAsync(new VetList());
         }
 
-       async private void btnPetList_Clicked(object sender, EventArgs e)
+       async private void BtnPetList_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PetList());
         }
 
-        async private void btnLogout_Clicked(object sender, EventArgs e)
+        private async void UserList_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new UserPage(user));
+        }
+
+        async private void BtnLogout_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopToRootAsync();
         }

@@ -15,14 +15,19 @@
                     <DataTemplate>
                         <StackLayout>
                             <Grid Padding="10" RowDefinitions="Auto, *">
-                                <Label Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="{Binding UserId}" FontSize="Small"/>
+                                <Label x:Name="userId" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="{Binding UserId}" FontSize="Small"/>
                                 <Label Grid.Row="1" Grid.Column="1" Text="{Binding Username}"  FontSize="Small"/>
                                 <Label Grid.Row="1" Grid.Column="2" Text="{Binding Password}"  FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding IsRead}"  FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="4" Text="{Binding IsWrite}"  FontSize="Small"/>
+                                <Label Grid.Row="1" Grid.Column="5" Text="{Binding IsDelete}"  FontSize="Small"/>
                             </Grid>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <Button Text="Get Detail" Clicked="Button_Clicked_Get"/>
+            <Button x:Name="btnDelete" Text="Delete Detail" Clicked="Button_Clicked_Delete"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -36,14 +36,21 @@
                 Text="Pet List"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="btnPetList_Clicked"
+                Clicked="BtnPetList_Clicked"
+                Grid.Row="6"/>
+        <Button x:Name="UserList"
+                Text="UserList"
+                FontSize="Small"
+                BackgroundColor="LightBlue"
+                Clicked="UserList_Clicked"
                 Grid.Row="6"/>
         <Button x:Name="btnLogout"
                 Text="Logout"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="btnLogout_Clicked"
-                Grid.Row="6"/>
+                Clicked="BtnLogout_Clicked"
+                Grid.Row="7"/>
+       
 
     </StackLayout>
 

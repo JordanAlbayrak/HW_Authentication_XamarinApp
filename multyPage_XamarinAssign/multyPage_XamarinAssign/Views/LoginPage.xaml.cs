@@ -33,7 +33,7 @@ namespace multyPage_XamarinAssign
                 if (u.Username.Equals(username) && u.Password.Equals(password))
                 {
                     await DisplayAlert("Login result", "Success", "OK");
-                    await Navigation.PushAsync(new HomePage());
+                    await Navigation.PushAsync(new HomePage(u));
                 }
                 else
                 {
@@ -48,9 +48,6 @@ namespace multyPage_XamarinAssign
             await Navigation.PushAsync(new Registration());
         }
 
-        private async void UserList_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new UserPage());
-        }
+   
     }
 }
