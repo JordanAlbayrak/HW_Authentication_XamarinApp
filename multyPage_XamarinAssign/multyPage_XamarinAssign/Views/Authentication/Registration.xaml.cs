@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Models;
+using multyPage_XamarinAssign.Models.Enums;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace multyPage_XamarinAssign
+namespace multyPage_XamarinAssign.Views.Authentication
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Registration : ContentPage, INotifyPropertyChanged
@@ -16,6 +15,7 @@ namespace multyPage_XamarinAssign
         public new event PropertyChangedEventHandler PropertyChanged;
 
         private User _user;
+        private Models.Owner _owner;
 
         public User User
         {
@@ -43,24 +43,33 @@ namespace multyPage_XamarinAssign
                 {
                     if (_user.Username.Equals("admin"))
                     {
-                        _user.Role = Models.RoleType.Admin;
+                        _user.Role = RoleType.Admin;
                         _user.AddPermissions();
                     }
                     else if (_user.Username == "intern")
                     {
-                        _user.Role = Models.RoleType.Intern;
+                        _user.Role = RoleType.Internal;
                         _user.AddPermissions();
                     }
                     else
                     {
-                        _user.Role = Models.RoleType.Viewer;
+                        _user.Role = RoleType.Viewer;
                         _user.AddPermissions();
                     }
                     
                     await App.Database.SaveUserAsync(_user);
+
+                    _owner = new Models.Owner
+                    {
+                        OwnerId = _user.UserId,
+                        OwnerFirstName = _user.FirstName,
+                        OwnerLastName = _user.LastName,
+                        OwnerPhoneNumber = _user.Phone,
+                    };
+                    
+                    await App.Database.SaveOwnerAsync(_owner);
                     await Navigation.PopAsync();
                 }
-
             }
             else
             {

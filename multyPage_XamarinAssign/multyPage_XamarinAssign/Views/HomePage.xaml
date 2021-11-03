@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="multyPage_XamarinAssign.HomePage">
+             x:Class="multyPage_XamarinAssign.Views.HomePage">
 
     <StackLayout>
         <Image x:Name="imgPet"  Source="petlogo.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
@@ -12,26 +12,27 @@
         FontSize="Large"/>
         <Label Text="{Binding Username}"
         FontSize="Large"/>
-
-
+        
+        <Button x:Name="BtnOwner"
+                Text="Owner"
+                FontSize="Small"
+                BackgroundColor="LightBlue"
+                Clicked="BtnOwner_OnClicked"/>
         <Button x:Name="btnVet"
                 Text="Register a Vet"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="btnVet_Clicked"
-                Grid.Row="4"/>
+                Clicked="btnVet_Clicked"/>
         <Button x:Name="btnVetList"
                 Text="Vet List"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="btnVetList_Clicked"
-                Grid.Row="6"/>
+                Clicked="btnVetList_Clicked"/>
         <Button x:Name="btnPet"
                 Text="Register a Pet"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="btnPet_Clicked"
-                Grid.Row="6"/>
+                Clicked="btnPet_Clicked"/>
         <Button x:Name="btnPetList"
                 Text="Pet List"
                 FontSize="Small"
@@ -42,14 +43,12 @@
                 Text="UserList"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="UserList_Clicked"
-                Grid.Row="6"/>
-        <Button x:Name="btnLogout"
-                Text="Logout"
-                FontSize="Small"
-                BackgroundColor="LightBlue"
-                Clicked="BtnLogout_Clicked"
-                Grid.Row="7"/>
+                Clicked="UserList_Clicked" />
+        <Button Text="Logout" FontSize="Small" BackgroundColor="LightBlue"  Clicked="BtnLogout_Clicked"  Grid.Row="7"/>
+                
+                
+               
+               
        
 
     </StackLayout>

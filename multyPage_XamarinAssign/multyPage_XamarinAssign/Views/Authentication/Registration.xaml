@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="multyPage_XamarinAssign.Views.PermissionPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="multyPage_XamarinAssign.Views.Authentication.Registration">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid RowDefinitions="*" Padding="20">
+        <StackLayout Padding="20"
+            VerticalOptions="Center">
+            <Grid RowDefinitions="*">
                 <Label Text="Welcome to Registration Page!"
                 FontSize="Large"
                 HorizontalOptions="Center" 
@@ -47,38 +48,15 @@
                 Text="{ Binding User.Password }"
                        Grid.Row="7"
                 />
-                <Button x:Name="btnSave"
+                <Button x:Name="btnRegister"
                 Text="Register"
                 BackgroundColor="LightBlue"
                 BorderWidth="0"
-                Clicked="BtnSave_Clicked"
+                Clicked="btnRegister_Clicked"
                 FontSize="Small"
                 Grid.Row="9"
                 />
             </Grid>
-
-            <Grid Padding="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                
-                <CheckBox x:Name="chkRead" Grid.Row="0" Grid.Column="0"/>
-                <Label VerticalTextAlignment="Center" Text="Read" Grid.Row="0" Grid.Column="1"/>
-                <CheckBox x:Name="chkModify" Grid.Row="1" Grid.Column="0"/>
-                <Label VerticalTextAlignment="Center" Text="Modify" Grid.Row="1" Grid.Column="1"></Label>
-                <CheckBox x:Name="chkDelete" Grid.Row="2" Grid.Column="0"/>
-                <Label VerticalTextAlignment="Center" Text="Delete" Grid.Row="2" Grid.Column="1"/>
-            </Grid>
-          
-
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

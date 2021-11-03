@@ -1,15 +1,11 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
-using SQLite;
+﻿using SQLite;
 
-namespace multyPage_XamarinAssign
+namespace multyPage_XamarinAssign.Models
 {
     public class Vet
     {
         [PrimaryKey, AutoIncrement]
-        public int VetID { get; set; }
+        public int VetId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

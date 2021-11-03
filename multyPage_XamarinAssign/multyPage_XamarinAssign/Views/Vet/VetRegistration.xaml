@@ -1,58 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="multyPage_XamarinAssign.Registration">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="multyPage_XamarinAssign.Views.Vet.VetRegistration">
     <ContentPage.Content>
         <StackLayout Padding="20"
             VerticalOptions="Center">
             <Grid RowDefinitions="*">
-                <Label Text="Welcome to Registration Page!"
+                <Label Text="Welcome to Vet Registration Page!"
                 FontSize="Large"
-                HorizontalOptions="Center" 
-                       Grid.Row="0"/>
-                <Entry x:Name="txtRegUserName"
-                Placeholder="Username"
+                HorizontalTextAlignment="Center" 
+                       Grid.Row="1"
+                       Grid.RowSpan="2"/>
+                <Entry x:Name="txtVetRegFirst"
+                Placeholder="First Nmae"
                 FontSize="Large"
-                Text="{ Binding User.Username }"
-                       Grid.Row="2"
-                />
-                <Entry x:Name="txtRegFirst"
-                Placeholder="First Name"
-                FontSize="Large"
-                Text="{ Binding User.FirstName }"
+                Text="{ Binding Vet.FirstName }"
                        Grid.Row="3"
                 />
-                <Entry x:Name="txtRegLast"
+                <Entry x:Name="txtVetRegLast"
                 Placeholder="Last Name"
                 FontSize="Large"
-                Text="{ Binding User.LastName }"
+                Text="{ Binding Vet.LastName }"
                        Grid.Row="4"
                 />
-                <Entry x:Name="txtRegEmail"
+                <Entry x:Name="txtVetRegEmail"
                 Placeholder="Email"
                 FontSize="Large"
-                Text="{ Binding User.Email }"
+                Text="{ Binding Vet.Email }"
                        Grid.Row="5"
                 />
-                <Entry x:Name="txtRegPhone"
+                <Entry x:Name="txtVetRegPhone"
                 Placeholder="Phone Number"
                 FontSize="Large"
-                Text="{ Binding User.Phone }"
+                Text="{ Binding Vet.Phone }"
                 Keyboard="Numeric"
                 Grid.Row="6"
                 />
-                <Entry x:Name="txtRegPassword"
-                Placeholder="Password"
+                <Entry x:Name="txtVetRegSpecial"
+                Placeholder="Specialty"
                 FontSize="Large"
-                IsPassword="True"
-                Text="{ Binding User.Password }"
+                Text="{ Binding Vet.Special }"
                        Grid.Row="7"
                 />
                 <Button x:Name="btnRegister"
                 Text="Register"
                 BackgroundColor="LightBlue"
                 BorderWidth="0"
-                Clicked="btnRegister_Clicked"
+                Clicked="btnVetRegister_Clicked"
                 FontSize="Small"
                 Grid.Row="9"
                 />

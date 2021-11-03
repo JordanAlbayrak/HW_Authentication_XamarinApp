@@ -4,11 +4,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace multyPage_XamarinAssign.Views
+namespace multyPage_XamarinAssign.Views.Authentication
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PermissionPage : ContentPage
@@ -27,7 +28,7 @@ namespace multyPage_XamarinAssign.Views
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(User)));
             }
         }
-        int userId;
+        readonly int userId;
         public PermissionPage(int id)
         {
             _user = new User();
@@ -38,7 +39,7 @@ namespace multyPage_XamarinAssign.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            _user = await App.Database.GetItemAsyncById(Convert.ToInt32(userId));
+            _user = await App.Database.GetUserById(Convert.ToInt32(userId));
 
             if (_user.IsRead == true)
             {

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using multyPage_XamarinAssign.Models;
 using SQLite;
 
-namespace multyPage_XamarinAssign
+namespace multyPage_XamarinAssign.Database
 {
     public class DBPetClinic
     {
@@ -15,9 +16,11 @@ namespace multyPage_XamarinAssign
             _database.CreateTableAsync<User>().Wait();
             _database.CreateTableAsync<Vet>().Wait();
             _database.CreateTableAsync<Pet>().Wait();
+            _database.CreateTableAsync<Owner>().Wait();
 
         }
-        public Task<List<User>> GetAsync()
+        //User
+        public Task<List<User>> GetUsersAsync()
         {
             return
             _database.Table<User>().ToListAsync();
@@ -44,14 +47,49 @@ namespace multyPage_XamarinAssign
             return _database.DeleteAsync(user);
         }
 
-        public Task<User> GetItemAsyncById(int userId)
+        public Task<User> GetUserById(int userId)
         {
             return _database.Table<User>().Where(i => i.UserId == userId).FirstOrDefaultAsync();
         }
 
-        public Task<User> GetItemAsync(string username, string password)
+        public Task<User> GetUserByUsernamePassword(string username, string password)
         {
             return _database.Table<User>().Where(i => i.Username == username && i.Password == password).FirstOrDefaultAsync();
+        }
+        
+        //Owners
+        
+        public Task<List<Owner>> GetOwnersAsync()
+        {
+            return
+            _database.Table<Owner>().ToListAsync();
+        }
+        
+        public Task<int> SaveOwnerAsync(Owner owner)
+        {
+            return _database.InsertAsync(owner);
+        }
+        
+        public Task<int> UpdateOwnerAsync(Owner owner)
+        {
+            if (owner.OwnerId != 0)
+            {
+                return _database.UpdateAsync(owner);
+            }
+            else
+            {
+                return _database.InsertAsync(owner);
+            }
+        }
+        
+        public Task<int> DeleteOwnerAsync(Owner owner)
+        {
+            return _database.DeleteAsync(owner);
+        }
+        
+        public Task<Owner> GetOwnerById(int ownerId)
+        {
+            return _database.Table<Owner>().Where(i => i.OwnerId == ownerId).FirstOrDefaultAsync();
         }
 
         //Vet
@@ -74,10 +112,16 @@ namespace multyPage_XamarinAssign
         {
             return _database.InsertAsync(pet);
         }
+        
+        public Task<Pet> GetPetById(int petId)
+        {
+            return _database.Table<Pet>().Where(i => i.PetId == petId).FirstOrDefaultAsync();
+        }
 
         public Task<List<User>> GetUserAsync()
         {
             return _database.Table<User>().ToListAsync();
         }
+        
     }
 }

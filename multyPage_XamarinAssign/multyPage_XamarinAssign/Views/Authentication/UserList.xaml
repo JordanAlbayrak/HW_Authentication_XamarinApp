@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="multyPage_XamarinAssign.UserPage">
+             x:Class="multyPage_XamarinAssign.Views.Authentication.UserList">
     <ContentPage.Content>
         <StackLayout>
             <Label FontSize="Large" HorizontalTextAlignment="Center">User List</Label>
@@ -15,12 +15,12 @@
                     <DataTemplate>
                         <StackLayout>
                             <Grid Padding="10" RowDefinitions="Auto, *">
-                                <Label x:Name="userId" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" Text="{Binding UserId}" FontSize="Small"/>
-                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Username}"  FontSize="Small"/>
-                                <Label Grid.Row="1" Grid.Column="2" Text="{Binding Password}"  FontSize="Small"/>
-                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding IsRead}"  FontSize="Small"/>
-                                <Label Grid.Row="1" Grid.Column="4" Text="{Binding IsWrite}"  FontSize="Small"/>
-                                <Label Grid.Row="1" Grid.Column="5" Text="{Binding IsDelete}"  FontSize="Small"/>
+                                <Label x:Name="userId" Grid.Column="0" FontAttributes="Bold" Text="{Binding UserId}" FontSize="Small"/>
+                                <Label Grid.Column="1" Text="{Binding Username}"  FontSize="Small"/>
+                                <Label Grid.Column="2" Text="{Binding Password}"  FontSize="Small"/>
+                                <Label Grid.Column="3" Text="{Binding IsRead}"  FontSize="Small"/>
+                                <Label Grid.Column="4" Text="{Binding IsWrite}"  FontSize="Small"/>
+                                <Label Grid.Column="5" Text="{Binding IsDelete}"  FontSize="Small"/>
                             </Grid>
                         </StackLayout>
                     </DataTemplate>

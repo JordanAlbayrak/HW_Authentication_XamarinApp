@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using multyPage_XamarinAssign.Config;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace multyPage_XamarinAssign
+namespace multyPage_XamarinAssign.Views.Vet
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VetRegistration : ContentPage, INotifyPropertyChanged
@@ -16,9 +16,9 @@ namespace multyPage_XamarinAssign
 
         public new event PropertyChangedEventHandler PropertyChanged;
 
-        private Vet _vet;
+        private Models.Vet _vet;
 
-        public Vet Vet
+        public Models.Vet Vet
         {
             get => _vet;
             set
@@ -31,7 +31,7 @@ namespace multyPage_XamarinAssign
         //public Vet vet { get; set; }
         public VetRegistration()
         {
-            _vet = new Vet();
+            _vet = new Models.Vet();
             InitializeComponent();
             BindingContext = this;
         }

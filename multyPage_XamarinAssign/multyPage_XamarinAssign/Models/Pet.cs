@@ -3,12 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace multyPage_XamarinAssign
+namespace multyPage_XamarinAssign.Models
 {
     public class Pet
     {
         [PrimaryKey, AutoIncrement]
-        public int PetID { get; set; }
+        public int PetId { get; set; }
         public string PetName { get; set; }
         public string PetType { get; set; }
 

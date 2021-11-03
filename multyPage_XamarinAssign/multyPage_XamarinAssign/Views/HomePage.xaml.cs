@@ -5,57 +5,65 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Models.Enums;
+using multyPage_XamarinAssign.Views.Authentication;
+using multyPage_XamarinAssign.Views.Owner;
+using multyPage_XamarinAssign.Views.Pet;
+using multyPage_XamarinAssign.Views.Vet;
 using Xamarin.Forms;
 
-namespace multyPage_XamarinAssign
+namespace multyPage_XamarinAssign.Views
 {
     public partial class HomePage : ContentPage
     {
-        private readonly User user;
-
-        public HomePage(User user)
+        public HomePage()
         {
             InitializeComponent();
-            this.user = user;
 
-            if (user.Role == RoleType.Viewer)
+            if (App.User.Role == RoleType.Viewer)
             {
                 btnVetList.IsEnabled = false;
                 btnVet.IsEnabled = false;
                 UserList.IsEnabled = false;
             }
-            else if (user.Role == RoleType.Intern)
+            else if (App.User.Role == RoleType.Internal)
             {
                 UserList.IsEnabled = false;           
             }
         }
 
-        async private void btnVet_Clicked(object sender, EventArgs e)
+        private async void btnVet_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new VetRegistration());
         }
 
-        async private void btnPet_Clicked(object sender, EventArgs e)
+        private async void btnPet_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PetRegistration());
         }
 
-       async private void btnVetList_Clicked(object sender, EventArgs e)
+        private async void btnVetList_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new VetList());
         }
 
-       async private void BtnPetList_Clicked(object sender, EventArgs e)
+        private async void BtnPetList_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PetList());
         }
 
         private async void UserList_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new UserPage(user));
+            await Navigation.PushAsync(new UserList());
+        }
+        
+        private async void BtnOwner_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new OwnerPage());
         }
 
-        async private void BtnLogout_Clicked(object sender, EventArgs e)
+        private async void BtnLogout_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopToRootAsync();
         }

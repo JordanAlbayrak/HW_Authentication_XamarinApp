@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using multyPage_XamarinAssign.Config;
 
 namespace multyPage_XamarinAssign.Droid
 {
