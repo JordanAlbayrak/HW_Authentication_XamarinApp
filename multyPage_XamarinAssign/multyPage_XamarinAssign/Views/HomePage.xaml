@@ -28,11 +28,6 @@
                 FontSize="Small"
                 BackgroundColor="LightBlue"
                 Clicked="btnVetList_Clicked"/>
-        <Button x:Name="btnPet"
-                Text="Register a Pet"
-                FontSize="Small"
-                BackgroundColor="LightBlue"
-                Clicked="btnPet_Clicked"/>
         <Button x:Name="btnPetList"
                 Text="Pet List"
                 FontSize="Small"
@@ -44,7 +39,7 @@
                 FontSize="Small"
                 BackgroundColor="LightBlue"
                 Clicked="UserList_Clicked" />
-        <Button Text="Logout" FontSize="Small" BackgroundColor="LightBlue"  Clicked="BtnLogout_Clicked"  Grid.Row="7"/>
+        <Button Text="Logout" FontSize="Small" BackgroundColor="LightBlue"  Clicked="BtnLogout_Clicked" />
                 
                 
                

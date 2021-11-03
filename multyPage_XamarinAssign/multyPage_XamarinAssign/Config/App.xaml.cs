@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using multyPage_XamarinAssign.Database;
 using multyPage_XamarinAssign.Models;
 using multyPage_XamarinAssign.Views.Authentication;
@@ -19,7 +20,7 @@ namespace multyPage_XamarinAssign.Config
                 {
                     database = new DBPetClinic
                         (Path.Combine(Environment.GetFolderPath
-                        (Environment.SpecialFolder.LocalApplicationData), "databaseV1.3.1.db3"));
+                        (Environment.SpecialFolder.LocalApplicationData), "databaseV1.3.2.db3"));
                 }
                 return database;
             }
@@ -34,7 +35,6 @@ namespace multyPage_XamarinAssign.Config
             //MainPage = new MainPage();
             MainPage = new NavigationPage((new LoginPage()));
         }
-
         protected override void OnStart()
         {
         }

@@ -11,7 +11,7 @@ namespace multyPage_XamarinAssign.Models
         public int PetId { get; set; }
         public string PetName { get; set; }
         public string PetType { get; set; }
-
+        
         public bool IsValid(out string message)
         {
             message = default;

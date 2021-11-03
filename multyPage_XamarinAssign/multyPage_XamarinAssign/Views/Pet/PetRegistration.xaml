@@ -12,27 +12,26 @@
                        Grid.Row="0"
                            Grid.RowSpan="2"
                            />
-                    <Entry x:Name="txtRegPetName"
+                    <Entry x:Name="TxtRegPetName"
                 Placeholder="Pet Name"
                 FontSize="Large"
                 Text="{ Binding Pet.PetName }"
                        Grid.Row="2"
                 />
-                    <Entry x:Name="txtRegPetType"
+                    <Entry x:Name="TxtRegPetType"
                 Placeholder="Pet Type"
                 FontSize="Large"
                 Text="{ Binding Pet.PetType }"
                        Grid.Row="3"
                 />
-
-                    <Button x:Name="btnRegister"
-                Text="Register"
-                BackgroundColor="LightBlue"
-                BorderWidth="0"
-                Clicked="btnPetRegister_Clicked"
-                FontSize="Small"
-                Grid.Row="9"
-                />
+                    <Button x:Name="BtnRegister"
+                            Text="Register"
+                            BackgroundColor="LightBlue"
+                            BorderWidth="0"
+                            Clicked="btnPetRegister_Clicked"
+                            FontSize="Small"
+                            Grid.Row="9"
+                    />
                 </Grid>
             </StackLayout>
         </ContentPage.Content>

@@ -122,6 +122,17 @@ namespace multyPage_XamarinAssign.Database
         {
             return _database.Table<User>().ToListAsync();
         }
+        public Task<int> UpdatePetAsync(Pet pet)
+        {
+            if (pet.PetId != 0)
+            {
+                return _database.UpdateAsync(pet);
+            }
+            else
+            {
+                return _database.InsertAsync(pet);
+            }
+        }
         
     }
 }
