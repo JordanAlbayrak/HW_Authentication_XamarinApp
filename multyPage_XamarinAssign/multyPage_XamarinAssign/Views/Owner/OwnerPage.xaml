@@ -19,6 +19,10 @@
                 <Label Grid.Row="2" Grid.Column="0"  Text="Owner PhoneNumber: " FontSize="Small" />
                 <Label Grid.Row="2" Grid.Column="1"  x:Name="OwnerPhoneNumber" FontSize="Small" />
             </Grid>
+            <BoxView 
+                HeightRequest="1"
+                Color="LightGray"
+                Margin ="40, 0, 40, 0"/>
             
             <Grid Padding="10" RowDefinitions="Auto, *">
                 <Label Grid.Row="0" Grid.Column="0" Text="Pet Name 1: " FontSize="Small" />
@@ -26,7 +30,10 @@
                 <Label Grid.Row="1" Grid.Column="0"  Text="Pet Type 1: " FontSize="Small" />
                 <Label Grid.Row="1" Grid.Column="1"  x:Name="PetType1" FontSize="Small" />
             </Grid>
-            
+            <BoxView 
+                HeightRequest="1"
+                Color="LightGray"
+                Margin ="40, 0, 40, 0"/>
             <Grid Padding="10" RowDefinitions="Auto, *">
                 <Label Grid.Row="0" Grid.Column="0" Text="Pet Name 2: " FontSize="Small" />
                 <Label Grid.Row="0" Grid.Column="1"  x:Name="PetName2" FontSize="Small" />

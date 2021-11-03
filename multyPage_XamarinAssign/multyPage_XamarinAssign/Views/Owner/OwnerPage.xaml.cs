@@ -43,9 +43,17 @@ namespace multyPage_XamarinAssign.Views.Owner
 
         }
     
-    private void Button_OnClicked(object sender, EventArgs e)
+    private async void Button_OnClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new PetRegistration());
+            if ((App.Owner.PetId1 == 0) || (App.Owner.PetId2 == 0))
+            {
+                await Navigation.PushAsync(new PetRegistration());
+            }
+            else
+            {
+                await DisplayAlert("Too many pets", "You have to many pets associated with the account", "Ok");
+            }
+           
         }
     }
 }
