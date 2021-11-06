@@ -1,38 +1,35 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="multyPage_XamarinAssign.Views.Pet.PetRegistration">
     <ContentPage.Content>
-            <StackLayout Padding="20"
-            VerticalOptions="Center">
-                <Grid RowDefinitions="*">
-                    <Label Text="Welcome to the Pet Registration Page!"
-                FontSize="Large"
-                HorizontalTextAlignment="Center" 
+        <StackLayout Padding="20"
+                     VerticalOptions="Center">
+            <Grid RowDefinitions="*">
+                <Label Text="Welcome to the Pet Registration Page!"
+                       FontSize="Large"
+                       HorizontalTextAlignment="Center"
                        Grid.Row="0"
-                           Grid.RowSpan="2"
-                           />
-                    <Entry x:Name="TxtRegPetName"
-                Placeholder="Pet Name"
-                FontSize="Large"
-                Text="{ Binding Pet.PetName }"
-                       Grid.Row="2"
-                />
-                    <Entry x:Name="TxtRegPetType"
-                Placeholder="Pet Type"
-                FontSize="Large"
-                Text="{ Binding Pet.PetType }"
-                       Grid.Row="3"
-                />
-                    <Button x:Name="BtnRegister"
-                            Text="Register"
-                            BackgroundColor="LightBlue"
-                            BorderWidth="0"
-                            Clicked="btnPetRegister_Clicked"
-                            FontSize="Small"
-                            Grid.Row="9"
-                    />
-                </Grid>
-            </StackLayout>
-        </ContentPage.Content>
+                       Grid.RowSpan="2" />
+                <Entry x:Name="TxtRegPetName"
+                       Placeholder="Pet Name"
+                       FontSize="Large"
+                       Text="{ Binding Pet.PetName }"
+                       Grid.Row="2" />
+                <Entry x:Name="TxtRegPetType"
+                       Placeholder="Pet Type"
+                       FontSize="Large"
+                       Text="{ Binding Pet.PetType }"
+                       Grid.Row="3" />
+                <Button x:Name="BtnRegister"
+                        Text="Register"
+                        BackgroundColor="LightBlue"
+                        BorderWidth="0"
+                        Clicked="btnPetRegister_Clicked"
+                        FontSize="Small"
+                        Grid.Row="9" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

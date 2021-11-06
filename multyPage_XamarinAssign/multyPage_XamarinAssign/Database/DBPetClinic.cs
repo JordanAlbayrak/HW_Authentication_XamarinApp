@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using multyPage_XamarinAssign.Models;
 using SQLite;
@@ -9,7 +7,8 @@ namespace multyPage_XamarinAssign.Database
 {
     public class DBPetClinic
     {
-        readonly SQLiteAsyncConnection _database;
+        private readonly SQLiteAsyncConnection _database;
+
         public DBPetClinic(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
@@ -17,14 +16,15 @@ namespace multyPage_XamarinAssign.Database
             _database.CreateTableAsync<Vet>().Wait();
             _database.CreateTableAsync<Pet>().Wait();
             _database.CreateTableAsync<Owner>().Wait();
-
         }
+
         //User
         public Task<List<User>> GetUsersAsync()
         {
             return
-            _database.Table<User>().ToListAsync();
+                _database.Table<User>().ToListAsync();
         }
+
         public Task<int> SaveUserAsync(User user)
         {
             return _database.InsertAsync(user);
@@ -33,18 +33,13 @@ namespace multyPage_XamarinAssign.Database
         public Task<int> UpdateUserAsync(User user)
         {
             if (user.UserId != 0)
-            {
                 return _database.UpdateAsync(user);
-            }
-            else
-            {
-                return _database.InsertAsync(user);
-            }        
+            return _database.InsertAsync(user);
         }
 
-        public Task<int> DeleteUserAsync(User user)
+        public Task<int> DeleteUserAsync(int id)
         {
-            return _database.DeleteAsync(user);
+            return _database.DeleteAsync<User>(id);
         }
 
         public Task<User> GetUserById(int userId)
@@ -54,39 +49,35 @@ namespace multyPage_XamarinAssign.Database
 
         public Task<User> GetUserByUsernamePassword(string username, string password)
         {
-            return _database.Table<User>().Where(i => i.Username == username && i.Password == password).FirstOrDefaultAsync();
+            return _database.Table<User>().Where(i => i.Username == username && i.Password == password)
+                .FirstOrDefaultAsync();
         }
-        
+
         //Owners
-        
+
         public Task<List<Owner>> GetOwnersAsync()
         {
             return
-            _database.Table<Owner>().ToListAsync();
+                _database.Table<Owner>().ToListAsync();
         }
-        
+
         public Task<int> SaveOwnerAsync(Owner owner)
         {
             return _database.InsertAsync(owner);
         }
-        
+
         public Task<int> UpdateOwnerAsync(Owner owner)
         {
             if (owner.OwnerId != 0)
-            {
                 return _database.UpdateAsync(owner);
-            }
-            else
-            {
-                return _database.InsertAsync(owner);
-            }
+            return _database.InsertAsync(owner);
         }
-        
+
         public Task<int> DeleteOwnerAsync(Owner owner)
         {
             return _database.DeleteAsync(owner);
         }
-        
+
         public Task<Owner> GetOwnerById(int ownerId)
         {
             return _database.Table<Owner>().Where(i => i.OwnerId == ownerId).FirstOrDefaultAsync();
@@ -96,8 +87,9 @@ namespace multyPage_XamarinAssign.Database
         public Task<List<Vet>> GetVetsAsync()
         {
             return
-            _database.Table<Vet>().ToListAsync();
+                _database.Table<Vet>().ToListAsync();
         }
+
         public Task<int> SaveVetAsync(Vet vet)
         {
             return _database.InsertAsync(vet);
@@ -108,11 +100,12 @@ namespace multyPage_XamarinAssign.Database
         {
             return _database.Table<Pet>().ToListAsync();
         }
+
         public Task<int> SavePetAsync(Pet pet)
         {
             return _database.InsertAsync(pet);
         }
-        
+
         public Task<Pet> GetPetById(int petId)
         {
             return _database.Table<Pet>().Where(i => i.PetId == petId).FirstOrDefaultAsync();
@@ -122,17 +115,12 @@ namespace multyPage_XamarinAssign.Database
         {
             return _database.Table<User>().ToListAsync();
         }
+
         public Task<int> UpdatePetAsync(Pet pet)
         {
             if (pet.PetId != 0)
-            {
                 return _database.UpdateAsync(pet);
-            }
-            else
-            {
-                return _database.InsertAsync(pet);
-            }
+            return _database.InsertAsync(pet);
         }
-        
     }
 }

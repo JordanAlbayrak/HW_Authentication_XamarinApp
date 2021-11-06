@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using multyPage_XamarinAssign.Config;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,10 +9,16 @@ namespace multyPage_XamarinAssign.Views.Vet
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VetRegistration : ContentPage, INotifyPropertyChanged
     {
-
-        public new event PropertyChangedEventHandler PropertyChanged;
-
         private Models.Vet _vet;
+
+        //bool isAdded = false;
+        //public Vet vet { get; set; }
+        public VetRegistration()
+        {
+            _vet = new Models.Vet();
+            InitializeComponent();
+            BindingContext = this;
+        }
 
         public Models.Vet Vet
         {
@@ -27,19 +29,13 @@ namespace multyPage_XamarinAssign.Views.Vet
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Vet)));
             }
         }
-        //bool isAdded = false;
-        //public Vet vet { get; set; }
-        public VetRegistration()
-        {
-            _vet = new Models.Vet();
-            InitializeComponent();
-            BindingContext = this;
-        }
 
-        async public void btnVetRegister_Clicked(object sender, EventArgs e)
+        public new event PropertyChangedEventHandler PropertyChanged;
+
+        public async void btnVetRegister_Clicked(object sender, EventArgs e)
         {
             string message = null;
-            if(_vet.IsValid(out message))
+            if (_vet.IsValid(out message))
             {
                 Console.WriteLine(_vet.FirstName);
                 await App.Database.SaveVetAsync(_vet);
@@ -47,8 +43,7 @@ namespace multyPage_XamarinAssign.Views.Vet
             }
             else
             {
-                
-                    await DisplayAlert("Empty Fields", message, "Ok");
+                await DisplayAlert("Empty Fields", message, "Ok");
             }
 
             //var ErrorMessage = vet.IsValid();
@@ -96,7 +91,6 @@ namespace multyPage_XamarinAssign.Views.Vet
 
             //}
             //else { await DisplayAlert("Empty Fields", "Please fill all fields.", "Ok"); }
-
         }
     }
 }

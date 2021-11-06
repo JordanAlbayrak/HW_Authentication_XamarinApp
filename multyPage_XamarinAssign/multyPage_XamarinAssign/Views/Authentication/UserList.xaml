@@ -1,33 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="multyPage_XamarinAssign.Views.Authentication.UserList">
     <ContentPage.Content>
         <StackLayout>
             <Label FontSize="Large" HorizontalTextAlignment="Center">User List</Label>
-            <BoxView 
-                   HeightRequest="1"
-                   Color="LightGray"
-                   Margin ="40, 0, 40, 0"/>
+            <BoxView
+                HeightRequest="1"
+                Color="LightGray"
+                Margin="40, 0, 40, 0" />
 
             <CollectionView x:Name="userCollectionView">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
                             <Grid Padding="10" RowDefinitions="Auto, *">
-                                <Label x:Name="userId" Grid.Column="0" FontAttributes="Bold" Text="{Binding UserId}" FontSize="Small"/>
-                                <Label Grid.Column="1" Text="{Binding Username}"  FontSize="Small"/>
-                                <Label Grid.Column="2" Text="{Binding Password}"  FontSize="Small"/>
-                                <Label Grid.Column="3" Text="{Binding IsRead}"  FontSize="Small"/>
-                                <Label Grid.Column="4" Text="{Binding IsWrite}"  FontSize="Small"/>
-                                <Label Grid.Column="5" Text="{Binding IsDelete}"  FontSize="Small"/>
+                                <Label Grid.Column="0" Text="{Binding Username}" FontSize="Small" />
+                                <Label Grid.Column="1" Text="{Binding Password}" FontSize="Small" />
+                                <Label Grid.Column="2" Text="{Binding Role}" FontSize="Small" />
+                                <Button Text="Edit" x:Name="Button_Edit" Grid.Column="3" ClassId="{Binding UserId}"
+                                        Clicked="Button_Edit_OnClicked" />
+                                <Button Text="Delete" x:Name="Button_Delete" Grid.Column="4" ClassId="{Binding UserId}"
+                                        Clicked="Button_Delete_OnClicked" />
                             </Grid>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            <Button Text="Get Detail" Clicked="Button_Clicked_Get"/>
-            <Button x:Name="btnDelete" Text="Delete Detail" Clicked="Button_Clicked_Delete"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

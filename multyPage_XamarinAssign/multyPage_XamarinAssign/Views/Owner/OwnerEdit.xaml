@@ -7,30 +7,25 @@
         <StackLayout>
             <Label Text="Welcome to the Pet Registration Page!"
                    FontSize="Large"
-                   HorizontalTextAlignment="Center" 
-            />
+                   HorizontalTextAlignment="Center" />
             <Entry x:Name="TxtOwnerFirstName"
                    Placeholder="Pet Name"
-                   FontSize="Large"
-            />
+                   FontSize="Large" />
             <Entry x:Name="TxtOwnerLastName"
                    Placeholder="Last Name"
-                   FontSize="Large"
-            />
-            
+                   FontSize="Large" />
+
             <Entry x:Name="TxtOwnerPhone"
                    Placeholder="Last Name"
                    FontSize="Large"
-                   Keyboard="Numeric"
-            />
+                   Keyboard="Numeric" />
 
             <Button x:Name="BtnRegister"
                     Text="Register"
                     BackgroundColor="LightBlue"
                     BorderWidth="0"
                     Clicked="btnOwnerRegistration_Clicked"
-                    FontSize="Small"
-            />
+                    FontSize="Small" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

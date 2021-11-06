@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using multyPage_XamarinAssign.Config;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,14 +8,15 @@ namespace multyPage_XamarinAssign.Views.Pet
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PetEdit : ContentPage
     {
-        private int petId;
         private Models.Pet _pet;
+        private readonly int petId;
+
         public PetEdit(int PetId)
         {
             InitializeComponent();
             petId = PetId;
         }
-        
+
         protected override async void OnAppearing()
         {
             _pet = await App.Database.GetPetById(petId);

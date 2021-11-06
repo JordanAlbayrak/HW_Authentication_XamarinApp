@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using multyPage_XamarinAssign.Config;
 using multyPage_XamarinAssign.Models;
 using Xamarin.Forms;
@@ -13,7 +9,8 @@ namespace multyPage_XamarinAssign.Views.Owner
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OwnerEdit : ContentPage
     {
-        private Models.Owner owner;
+        private readonly Models.Owner owner;
+
         public OwnerEdit()
         {
             InitializeComponent();
@@ -26,7 +23,7 @@ namespace multyPage_XamarinAssign.Views.Owner
         private async void btnOwnerRegistration_Clicked(object sender, EventArgs e)
         {
             string message = null;
-            User user = new User();
+            var user = new User();
             if (App.Owner.IsValid(out message))
             {
                 owner.OwnerFirstName = TxtOwnerFirstName.Text;

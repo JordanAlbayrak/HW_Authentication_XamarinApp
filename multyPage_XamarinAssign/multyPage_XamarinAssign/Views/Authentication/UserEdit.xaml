@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="multyPage_XamarinAssign.Views.Authentication.Registration">
+             x:Class="multyPage_XamarinAssign.Views.Authentication.UserEdit">
     <ContentPage.Content>
         <StackLayout Padding="20"
                      VerticalOptions="Center">
@@ -11,45 +11,59 @@
                        FontSize="Large"
                        HorizontalOptions="Center"
                        Grid.Row="0" />
-                <Entry x:Name="txtRegUserName"
+                <Entry x:Name="TxtUsername"
                        Placeholder="Username"
                        FontSize="Large"
-                       Text="{ Binding User.Username }"
                        Grid.Row="2" />
-                <Entry x:Name="txtRegFirst"
+                <Entry x:Name="TxtRegFirst"
                        Placeholder="First Name"
                        FontSize="Large"
-                       Text="{ Binding User.FirstName }"
                        Grid.Row="3" />
-                <Entry x:Name="txtRegLast"
+                <Entry x:Name="TxtRegLast"
                        Placeholder="Last Name"
                        FontSize="Large"
-                       Text="{ Binding User.LastName }"
                        Grid.Row="4" />
-                <Entry x:Name="txtRegEmail"
+                <Entry x:Name="TxtRegEmail"
                        Placeholder="Email"
                        FontSize="Large"
-                       Text="{ Binding User.Email }"
                        Grid.Row="5" />
-                <Entry x:Name="txtRegPhone"
+                <Entry x:Name="TxtRegPhone"
                        Placeholder="Phone Number"
                        FontSize="Large"
-                       Text="{ Binding User.Phone }"
                        Keyboard="Numeric"
                        Grid.Row="6" />
-                <Entry x:Name="txtRegPassword"
+                <Entry x:Name="TxtRegPassword"
                        Placeholder="Password"
                        FontSize="Large"
                        IsPassword="True"
-                       Text="{ Binding User.Password }"
                        Grid.Row="7" />
-                <Button x:Name="btnRegister"
+                <Button x:Name="BtnRegister"
                         Text="Register"
                         BackgroundColor="LightBlue"
                         BorderWidth="0"
                         Clicked="btnRegister_Clicked"
                         FontSize="Small"
                         Grid.Row="9" />
+            </Grid>
+
+            <Grid Padding="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <CheckBox x:Name="chkRead" Grid.Row="0" Grid.Column="0" />
+                <Label VerticalTextAlignment="Center" Text="Read" Grid.Row="0" Grid.Column="1" />
+                <CheckBox x:Name="chkModify" Grid.Row="1" Grid.Column="0" />
+                <Label VerticalTextAlignment="Center" Text="Modify" Grid.Row="1" Grid.Column="1" />
+                <CheckBox x:Name="chkDelete" Grid.Row="2" Grid.Column="0" />
+                <Label VerticalTextAlignment="Center" Text="Delete" Grid.Row="2" Grid.Column="1" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

@@ -1,51 +1,44 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="multyPage_XamarinAssign.Views.HomePage">
 
     <StackLayout>
-        <Image x:Name="imgPet"  Source="petlogo.png" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <Image x:Name="ImgPet" Source="petlogo.png" />
 
-        <Label Text="Welcome to Home page!"  
-        VerticalOptions="Center"
-        HorizontalOptions="Center"
-        FontSize="Large"/>
+        <Label Text="Welcome to Home page!"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="Large" />
         <Label Text="{Binding Username}"
-        FontSize="Large"/>
-        
+               FontSize="Large" />
+
         <Button x:Name="BtnOwner"
                 Text="Owner"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="BtnOwner_OnClicked"/>
-        <Button x:Name="btnVet"
+                Clicked="BtnOwner_OnClicked" />
+        <Button x:Name="BtnVet"
                 Text="Register a Vet"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="btnVet_Clicked"/>
-        <Button x:Name="btnVetList"
+                Clicked="btnVet_Clicked" />
+        <Button x:Name="BtnVetList"
                 Text="Vet List"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="btnVetList_Clicked"/>
-        <Button x:Name="btnPetList"
+                Clicked="btnVetList_Clicked" />
+        <Button x:Name="BtnPetList"
                 Text="Pet List"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="BtnPetList_Clicked"
-                Grid.Row="6"/>
-        <Button x:Name="UserList"
-                Text="UserList"
+                Clicked="BtnPetList_Clicked" />
+        <Button x:Name="AdminPanel"
+                Text="Admin Panel"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
                 Clicked="UserList_Clicked" />
-        <Button Text="Logout" FontSize="Small" BackgroundColor="LightBlue"  Clicked="BtnLogout_Clicked" />
-                
-                
-               
-               
-       
-
+        <Button Text="Logout" FontSize="Small" BackgroundColor="LightBlue" Clicked="BtnLogout_Clicked" />
     </StackLayout>
-
 </ContentPage>

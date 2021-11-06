@@ -4,8 +4,8 @@ namespace multyPage_XamarinAssign.Models
 {
     public class Vet
     {
-        [PrimaryKey, AutoIncrement]
-        public int VetId { get; set; }
+        [PrimaryKey] [AutoIncrement] public int VetId { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -20,7 +20,7 @@ namespace multyPage_XamarinAssign.Models
                 !string.IsNullOrWhiteSpace(Email) &&
                 !string.IsNullOrWhiteSpace(Phone) &&
                 !string.IsNullOrWhiteSpace(Special))
-                { return true; }
+                return true;
 
             message = "Please fill all fields";
 

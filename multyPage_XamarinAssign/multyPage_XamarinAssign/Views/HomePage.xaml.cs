@@ -1,10 +1,4 @@
-﻿using multyPage_XamarinAssign.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using multyPage_XamarinAssign.Config;
 using multyPage_XamarinAssign.Models.Enums;
 using multyPage_XamarinAssign.Views.Authentication;
@@ -21,15 +15,20 @@ namespace multyPage_XamarinAssign.Views
         {
             InitializeComponent();
 
-            if (App.User.Role == RoleType.Viewer)
+            switch (App.User.Role)
             {
-                btnVetList.IsEnabled = false;
-                btnVet.IsEnabled = false;
-                UserList.IsEnabled = false;
-            }
-            else if (App.User.Role == RoleType.Internal)
-            {
-                UserList.IsEnabled = false;           
+                case RoleType.Viewer:
+                    BtnVetList.IsEnabled = false;
+                    BtnVet.IsEnabled = false;
+                    AdminPanel.IsEnabled = false;
+                    break;
+                case RoleType.Internal:
+                    AdminPanel.IsEnabled = false;
+                    break;
+                case RoleType.Admin:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -57,7 +56,7 @@ namespace multyPage_XamarinAssign.Views
         {
             await Navigation.PushAsync(new UserList());
         }
-        
+
         private async void BtnOwner_OnClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new OwnerPage());

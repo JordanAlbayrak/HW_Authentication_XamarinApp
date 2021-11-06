@@ -1,9 +1,4 @@
-﻿using multyPage_XamarinAssign;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using multyPage_XamarinAssign.Config;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,6 +12,7 @@ namespace multyPage_XamarinAssign.Views.Authentication
         {
             InitializeComponent();
         }
+
         private async void BtnLogin_Clicked(object sender, EventArgs e)
         {
             var username = TxtUserName.Text;
@@ -24,7 +20,7 @@ namespace multyPage_XamarinAssign.Views.Authentication
             try
             {
                 var user = await App.Database.GetUserByUsernamePassword(username, password);
-                
+
                 if (user.Username.Equals(username) && user.Password.Equals(password))
                 {
                     await DisplayAlert("Login result", "Success", "OK");
@@ -38,14 +34,15 @@ namespace multyPage_XamarinAssign.Views.Authentication
                     await DisplayAlert("Login result", "Incorrect Username or password", "OK");
                 }
             }
-            catch (Exception) { await DisplayAlert("Login result", "Incorrect Username or password", "OK"); }
+            catch (Exception)
+            {
+                await DisplayAlert("Login result", "Incorrect Username or password", "OK");
+            }
         }
 
         private async void BtnReg_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Registration());
         }
-
-   
     }
 }

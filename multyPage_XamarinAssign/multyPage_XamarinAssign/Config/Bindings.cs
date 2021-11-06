@@ -1,32 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
-namespace multyPage_XamarinAssign
+namespace multyPage_XamarinAssign.Config
 {
     public class Bindings : INotifyPropertyChanged
     {
-        string nameValue = null;
+        private string _nameValue;
+
         public string NameValue
         {
-            get => nameValue;
+            get => _nameValue;
             set
             {
-                if (value == nameValue)
+                if (value == _nameValue)
                     return;
-                nameValue = value;
+                _nameValue = value;
                 OnPropertyChanged(nameof(NameValue));
                 OnPropertyChanged(nameof(GetNameValue));
-
             }
         }
-        public string GetNameValue
-        {
-            get => $"You entered {NameValue}";
-        }
+
+        public string GetNameValue => $"You entered {NameValue}";
+
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged(string name)
+
+        private void OnPropertyChanged(string name)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }

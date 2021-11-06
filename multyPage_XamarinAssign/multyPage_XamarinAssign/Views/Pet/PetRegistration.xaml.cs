@@ -1,10 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using System.IO;
-using multyPage_XamarinAssign.Models;
 using multyPage_XamarinAssign.Config;
 using multyPage_XamarinAssign.Views.Owner;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,9 +10,14 @@ namespace multyPage_XamarinAssign.Views.Pet
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PetRegistration : ContentPage, INotifyPropertyChanged
     {
-        public new event PropertyChangedEventHandler PropertyChanged;
-
         private Models.Pet _pet;
+
+        public PetRegistration()
+        {
+            _pet = new Models.Pet();
+            InitializeComponent();
+            BindingContext = this;
+        }
 
         public Models.Pet Pet
         {
@@ -26,12 +28,8 @@ namespace multyPage_XamarinAssign.Views.Pet
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Pet)));
             }
         }
-        public PetRegistration()
-        {
-            _pet = new Models.Pet();
-            InitializeComponent();
-            BindingContext = this;
-        }
+
+        public new event PropertyChangedEventHandler PropertyChanged;
 
         private async void btnPetRegister_Clicked(object sender, EventArgs e)
         {
@@ -39,7 +37,7 @@ namespace multyPage_XamarinAssign.Views.Pet
             {
                 Console.WriteLine(_pet.PetName);
                 await App.Database.SavePetAsync(_pet);
-                Models.Owner owner = App.Owner;
+                var owner = App.Owner;
                 if (owner.PetId1 == 0)
                 {
                     owner.PetId1 = _pet.PetId;

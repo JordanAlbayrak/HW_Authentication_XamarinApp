@@ -5,8 +5,8 @@ namespace multyPage_XamarinAssign.Models
 {
     public class User
     {
-        [PrimaryKey, AutoIncrement]
-        public int UserId { get; set; }
+        [PrimaryKey] [AutoIncrement] public int UserId { get; set; }
+
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -28,7 +28,7 @@ namespace multyPage_XamarinAssign.Models
                 !string.IsNullOrWhiteSpace(Phone) &&
                 !string.IsNullOrWhiteSpace(Password) &&
                 Password.Length >= 10)
-            { return true; }
+                return true;
 
             message = "Please fill all fields and the password must be atleast 10 characters.";
 
@@ -43,7 +43,8 @@ namespace multyPage_XamarinAssign.Models
                 IsDelete = true;
                 IsWrite = true;
             }
-            else if (Role.Equals(RoleType.Internal)){
+            else if (Role.Equals(RoleType.Internal))
+            {
                 IsRead = true;
                 IsDelete = true;
                 IsWrite = true;
@@ -54,7 +55,6 @@ namespace multyPage_XamarinAssign.Models
                 IsDelete = false;
                 IsWrite = false;
             }
-
         }
     }
 }
