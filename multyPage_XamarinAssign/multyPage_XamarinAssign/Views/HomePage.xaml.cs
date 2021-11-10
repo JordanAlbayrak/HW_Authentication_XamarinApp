@@ -18,12 +18,14 @@ namespace multyPage_XamarinAssign.Views
             switch (App.User.Role)
             {
                 case RoleType.Viewer:
-                    BtnVetList.IsEnabled = false;
-                    BtnVet.IsEnabled = false;
+                    BtnVetPage.IsEnabled = false;
                     AdminPanel.IsEnabled = false;
+                    BtnOwner.IsEnabled = false;
                     break;
                 case RoleType.Internal:
                     AdminPanel.IsEnabled = false;
+                    BtnPetList.IsEnabled = false;
+                    BtnOwner.IsEnabled = false;
                     break;
                 case RoleType.Admin:
                     break;
@@ -36,17 +38,6 @@ namespace multyPage_XamarinAssign.Views
         {
             await Navigation.PushAsync(new VetRegistration());
         }
-
-        private async void btnPet_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new PetRegistration());
-        }
-
-        private async void btnVetList_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new VetList());
-        }
-
         private async void BtnPetList_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PetList());
@@ -65,6 +56,11 @@ namespace multyPage_XamarinAssign.Views
         private async void BtnLogout_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopToRootAsync();
+        }
+
+        private async void BtnVetPage_OnClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new VetPage());
         }
     }
 }

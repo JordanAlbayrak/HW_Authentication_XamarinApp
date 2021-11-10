@@ -122,5 +122,26 @@ namespace multyPage_XamarinAssign.Database
                 return _database.UpdateAsync(pet);
             return _database.InsertAsync(pet);
         }
+        
+        // delete vet
+        public Task<int> DeleteVetAsync(int id)
+        {
+            return _database.DeleteAsync<Vet>(id);
+        }
+        
+        // get vet by id
+        public Task<Vet> GetVetById(int vetId)
+        {
+            return _database.Table<Vet>().Where(i => i.VetId == vetId).FirstOrDefaultAsync();
+        }
+        
+        // update vet by id
+        public Task<int> UpdateVetAsync(Vet vet)
+        {
+            if (vet.VetId != 0)
+                return _database.UpdateAsync(vet);
+            return _database.InsertAsync(vet);
+        }
+        
     }
 }

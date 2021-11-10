@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="multyPage_XamarinAssign.Views.Vet.VetPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Hello, world!"
+                   VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand" />
+            <CollectionView x:Name="collectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Grid Padding="10" RowDefinitions="Auto, *">
+                                <Label Grid.Column="0" Text="{Binding FirstName}" FontSize="Small" />
+                                <Label Grid.Column="1" Text="{Binding LastName}" FontSize="Small" />
+                                <Label Grid.Column="2" Text="{Binding Email}" FontSize="Small" />
+                                <Label Grid.Column="3" Text="{Binding Special}" FontSize="Small" />
+                                <Button Text="Edit" x:Name="Button_Edit" Grid.Column="4" ClassId="{Binding VetId}"
+                                        Clicked="Button_Edit_OnClicked" />
+                                <Button Text="Delete" x:Name="Button_Delete" Grid.Column="5" ClassId="{Binding VetId}"
+                                        Clicked="Button_Delete_OnClicked" />
+                            </Grid>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button Text="Add Vet" Clicked="Button_OnClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

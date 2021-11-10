@@ -9,7 +9,7 @@ using Platform = Xamarin.Essentials.Platform;
 
 namespace multyPage_XamarinAssign.Droid
 {
-    [Activity(Label = "multyPage_XamarinAssign", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true,
+    [Activity(Label = "multyPage_XamarinAssign", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode |
                                ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : FormsAppCompatActivity

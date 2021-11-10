@@ -13,22 +13,16 @@
                FontSize="Large" />
         <Label Text="{Binding Username}"
                FontSize="Large" />
-
         <Button x:Name="BtnOwner"
                 Text="Owner"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
                 Clicked="BtnOwner_OnClicked" />
-        <Button x:Name="BtnVet"
-                Text="Register a Vet"
-                FontSize="Small"
-                BackgroundColor="LightBlue"
-                Clicked="btnVet_Clicked" />
-        <Button x:Name="BtnVetList"
+        <Button x:Name="BtnVetPage"
                 Text="Vet List"
                 FontSize="Small"
                 BackgroundColor="LightBlue"
-                Clicked="btnVetList_Clicked" />
+                Clicked="BtnVetPage_OnClicked" />
         <Button x:Name="BtnPetList"
                 Text="Pet List"
                 FontSize="Small"
