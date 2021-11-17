@@ -1,10 +1,10 @@
-﻿using SQLite;
+﻿
 
 namespace multyPage_XamarinAssign.Models
 {
     public class Vet
     {
-        [PrimaryKey] [AutoIncrement] public int VetId { get; set; }
+        public string VetId { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

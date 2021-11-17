@@ -1,146 +1,252 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using multyPage_XamarinAssign.Models;
-using SQLite;
+using Firebase.Database;
+using Newtonsoft.Json;
+using System;
+
+using System.IO;
+using System.Linq;
+
 
 namespace multyPage_XamarinAssign.Database
 {
     public class DBPetClinic
     {
-        private readonly SQLiteAsyncConnection _database;
-
-        public DBPetClinic(string dbPath)
-        {
-            _database = new SQLiteAsyncConnection(dbPath);
-            _database.CreateTableAsync<User>().Wait();
-            _database.CreateTableAsync<Vet>().Wait();
-            _database.CreateTableAsync<Pet>().Wait();
-            _database.CreateTableAsync<Owner>().Wait();
-        }
+        FirebaseClient firebaseClient =
+            new FirebaseClient
+            ("https://petclinicxamarin-default-rtdb.firebaseio.com/");
 
         //User
-        public Task<List<User>> GetUsersAsync()
+        public async Task<List<User>> GetUsersAsync()
         {
-            return
-                _database.Table<User>().ToListAsync();
+            return (await firebaseClient.
+                Child(nameof(User)).OnceAsync<User>()).Select(
+                item => new User
+                {
+                    UserId = item.Key,
+                    Username = item.Object.LastName,
+                    FirstName = item.Object.FirstName,
+                    LastName = item.Object.Email,
+                    Email = item.Object.Email,
+                    Phone = item.Object.Phone,
+                    Password = item.Object.Password,
+                    Role = item.Object.Role,
+                    IsRead = item.Object.IsRead,
+                    IsWrite = item.Object.IsWrite,
+                    IsDelete = item.Object.IsDelete,
+                }).ToList();
         }
 
-        public Task<int> SaveUserAsync(User user)
+        public async Task<bool> SaveUserAsync(User user)
         {
-            return _database.InsertAsync(user);
+            var data = await firebaseClient.Child(nameof(User)).
+            PostAsync(JsonConvert.SerializeObject(user));
+            if (!String.IsNullOrEmpty(data.Key))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
-        public Task<int> UpdateUserAsync(User user)
+        public async Task<bool> UpdateUserAsync(User user)
         {
-            if (user.UserId != 0)
-                return _database.UpdateAsync(user);
-            return _database.InsertAsync(user);
+            await firebaseClient.Child(nameof(User)
+                      + "/" + user.UserId).
+                      PutAsync(JsonConvert.SerializeObject(user));
+            return true;
         }
 
-        public Task<int> DeleteUserAsync(int id)
+        public async Task<bool> DeleteUserAsync(string userid)
         {
-            return _database.DeleteAsync<User>(id);
+            await firebaseClient.Child(nameof(User)
+              + "/" + userid).DeleteAsync();
+            return true;
         }
 
-        public Task<User> GetUserById(int userId)
+        public async Task<User> GetUserById(string userId)
         {
-            return _database.Table<User>().Where(i => i.UserId == userId).FirstOrDefaultAsync();
+            return (await firebaseClient.Child(nameof(User)
+        + "/" + userId).OnceSingleAsync<User>());
         }
 
-        public Task<User> GetUserByUsernamePassword(string username, string password)
+        public async Task<User> GetUserByUsernamePassword(string username, string password)
         {
-            return _database.Table<User>().Where(i => i.Username == username && i.Password == password)
-                .FirstOrDefaultAsync();
+            return (await firebaseClient.Child(nameof(User)
+            + "/" + username).OnceSingleAsync<User>());
         }
 
         //Owners
 
-        public Task<List<Owner>> GetOwnersAsync()
+        public async Task<List<Owner>> GetOwnersAsync()
         {
-            return
-                _database.Table<Owner>().ToListAsync();
+            //reading the firebaseClient.Child to fill/create the list
+            return (await firebaseClient.
+                Child(nameof(Owner)).OnceAsync<Owner>()).Select(
+                item => new Owner
+                {
+                    OwnerId = item.Object.OwnerId,
+                    OwnerLastName = item.Object.OwnerLastName,
+                    OwnerFirstName = item.Object.OwnerFirstName,
+                    OwnerPhoneNumber = item.Object.OwnerPhoneNumber,
+                    PetId1 = item.Object.PetId1,
+                    PetId2 = item.Object.PetId2,
+                }).ToList();
         }
 
-        public Task<int> SaveOwnerAsync(Owner owner)
+        public async Task<bool> SaveOwnerAsync(Owner owner)
         {
-            return _database.InsertAsync(owner);
+            var data = await firebaseClient.Child(nameof(Owner)).
+            PostAsync(JsonConvert.SerializeObject(owner));
+            if (!String.IsNullOrEmpty(data.Key))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public Task<int> UpdateOwnerAsync(Owner owner)
+        public async Task<bool> UpdateOwnerAsync(Owner owner)
         {
-            if (owner.OwnerId != 0)
-                return _database.UpdateAsync(owner);
-            return _database.InsertAsync(owner);
+            await firebaseClient.Child(nameof(Owner)
+                      + "/" + owner.OwnerId).
+                      PutAsync(JsonConvert.SerializeObject(owner));
+            return true;
         }
 
-        public Task<int> DeleteOwnerAsync(Owner owner)
+        public async Task<bool> DeleteOwnerAsync(Owner ownerId)
         {
-            return _database.DeleteAsync(owner);
+            await firebaseClient.Child(nameof(Owner)
+    + "/" + ownerId).DeleteAsync();
+            return true;
         }
 
-        public Task<Owner> GetOwnerById(int ownerId)
+        public async Task<Owner> GetOwnerById(string ownerId)
         {
-            return _database.Table<Owner>().Where(i => i.OwnerId == ownerId).FirstOrDefaultAsync();
+            return (await firebaseClient.Child(nameof(Owner)
+            + "/" + ownerId).OnceSingleAsync<Owner>());
         }
 
         //Vet
-        public Task<List<Vet>> GetVetsAsync()
+        public async Task<List<Vet>> GetVetsAsync()
         {
-            return
-                _database.Table<Vet>().ToListAsync();
+            return (await firebaseClient.
+              Child(nameof(Vet)).OnceAsync<Vet>()).Select(
+              item => new Vet
+              {
+                  VetId = item.Key,
+                  FirstName = item.Object.FirstName,
+                  LastName = item.Object.LastName,
+                  Email = item.Object.Email,
+                  Phone = item.Object.Phone,
+                  Special = item.Object.Special,
+              }).ToList();
         }
 
-        public Task<int> SaveVetAsync(Vet vet)
+        public async Task<bool> SaveVetAsync(Vet vet)
         {
-            return _database.InsertAsync(vet);
+            var data = await firebaseClient.Child(nameof(Vet)).
+                     PostAsync(JsonConvert.SerializeObject(vet));
+            if (!String.IsNullOrEmpty(data.Key))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         //Pet
-        public Task<List<Pet>> GetPetsAsync()
+        public async Task<List<Pet>> GetPetsAsync()
         {
-            return _database.Table<Pet>().ToListAsync();
+            return (await firebaseClient.
+              Child(nameof(Pet)).OnceAsync<Pet>()).Select(
+              item => new Pet
+              {
+                  PetId = item.Key,
+                  PetName = item.Object.PetName,
+                  PetType = item.Object.PetType,
+              }).ToList();
         }
 
-        public Task<int> SavePetAsync(Pet pet)
+        public async Task<bool> SavePetAsync(Pet pet)
         {
-            return _database.InsertAsync(pet);
+            var data = await firebaseClient.Child(nameof(Pet)).
+            PostAsync(JsonConvert.SerializeObject(pet));
+            if (!String.IsNullOrEmpty(data.Key))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public Task<Pet> GetPetById(int petId)
+        public async Task<Pet> GetPetById(int petId)
         {
-            return _database.Table<Pet>().Where(i => i.PetId == petId).FirstOrDefaultAsync();
+            return (await firebaseClient.Child(nameof(Pet)
+                    + "/" + petId).OnceSingleAsync<Pet>());
         }
 
-        public Task<List<User>> GetUserAsync()
+        public async Task<List<User>> GetUserAsync()
         {
-            return _database.Table<User>().ToListAsync();
+            return (await firebaseClient.
+            Child(nameof(User)).OnceAsync<User>()).Select(
+            item => new User
+            {
+                UserId = item.Key,
+                Username = item.Object.LastName,
+                FirstName = item.Object.FirstName,
+                LastName = item.Object.Email,
+                Email = item.Object.Email,
+                Phone = item.Object.Phone,
+                Password = item.Object.Password,
+                Role = item.Object.Role,
+                IsRead = item.Object.IsRead,
+                IsWrite = item.Object.IsWrite,
+                IsDelete = item.Object.IsDelete,
+            }).ToList();
         }
 
-        public Task<int> UpdatePetAsync(Pet pet)
+        public async Task<bool> UpdatePetAsync(Pet pet)
         {
-            if (pet.PetId != 0)
-                return _database.UpdateAsync(pet);
-            return _database.InsertAsync(pet);
+            await firebaseClient.Child(nameof(Pet)
+                + "/" + pet.PetId).
+                PutAsync(JsonConvert.SerializeObject(pet));
+            return true;
         }
         
         // delete vet
-        public Task<int> DeleteVetAsync(int id)
+        public async Task<bool> DeleteVetAsync(string vetId)
         {
-            return _database.DeleteAsync<Vet>(id);
+            await firebaseClient.Child(nameof(Vet)
+                + "/" + vetId).DeleteAsync();
+            return true;
         }
-        
+
         // get vet by id
-        public Task<Vet> GetVetById(int vetId)
+        public async Task<Vet> GetVetById(string vetId)
         {
-            return _database.Table<Vet>().Where(i => i.VetId == vetId).FirstOrDefaultAsync();
+            return (await firebaseClient.Child(nameof(Vet)
+           + "/" + vetId).OnceSingleAsync<Vet>());
         }
         
         // update vet by id
-        public Task<int> UpdateVetAsync(Vet vet)
+        public async Task<bool> UpdateVetAsync(Vet vet)
         {
-            if (vet.VetId != 0)
-                return _database.UpdateAsync(vet);
-            return _database.InsertAsync(vet);
+
+            await firebaseClient.Child(nameof(Vet)
+                + "/" + vet.VetId).
+                PutAsync(JsonConvert.SerializeObject(vet));
+            return true;
         }
         
     }

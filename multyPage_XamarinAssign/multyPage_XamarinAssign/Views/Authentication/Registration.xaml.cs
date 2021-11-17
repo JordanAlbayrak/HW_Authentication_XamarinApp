@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Database;
 using multyPage_XamarinAssign.Models;
 using multyPage_XamarinAssign.Models.Enums;
 using Xamarin.Forms;
@@ -14,6 +15,8 @@ namespace multyPage_XamarinAssign.Views.Authentication
         private Models.Owner _owner;
 
         private User _user;
+
+        DBPetClinic db = new DBPetClinic(); 
 
         public Registration()
         {
@@ -59,7 +62,7 @@ namespace multyPage_XamarinAssign.Views.Authentication
                         _user.AddPermissions();
                     }
 
-                    await App.Database.SaveUserAsync(_user);
+                    await db.SaveUserAsync(_user);
 
                     _owner = new Models.Owner
                     {
@@ -69,7 +72,7 @@ namespace multyPage_XamarinAssign.Views.Authentication
                         OwnerPhoneNumber = _user.Phone
                     };
 
-                    await App.Database.SaveOwnerAsync(_owner);
+                    await db.SaveOwnerAsync(_owner);
                     await Navigation.PopAsync();
                 }
             }

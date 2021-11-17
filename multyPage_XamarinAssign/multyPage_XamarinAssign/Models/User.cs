@@ -1,12 +1,11 @@
 ﻿using multyPage_XamarinAssign.Models.Enums;
-using SQLite;
+
 
 namespace multyPage_XamarinAssign.Models
 {
     public class User
     {
-        [PrimaryKey] [AutoIncrement] public int UserId { get; set; }
-
+        public string UserId { get; set; }
         public string Username { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

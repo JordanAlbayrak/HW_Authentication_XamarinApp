@@ -1,5 +1,6 @@
 ﻿using System;
 using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Database;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,6 +9,7 @@ namespace multyPage_XamarinAssign.Views.Authentication
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+        DBPetClinic db = new DBPetClinic();
         public LoginPage()
         {
             InitializeComponent();
@@ -19,13 +21,13 @@ namespace multyPage_XamarinAssign.Views.Authentication
             var password = TxtPassword.Text;
             try
             {
-                var user = await App.Database.GetUserByUsernamePassword(username, password);
+                var user = await db.GetUserByUsernamePassword(username, password);
 
                 if (user.Username.Equals(username) && user.Password.Equals(password))
                 {
                     await DisplayAlert("Login result", "Success", "OK");
                     App.User = user;
-                    App.Owner = await App.Database.GetOwnerById(Convert.ToInt32(user.UserId));
+                    App.Owner = await db.GetOwnerById(user.UserId);
                     Console.WriteLine("Name: " + App.Owner.OwnerFirstName);
                     await Navigation.PushAsync(new HomePage());
                 }

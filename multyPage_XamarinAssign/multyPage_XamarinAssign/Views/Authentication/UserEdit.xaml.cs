@@ -1,5 +1,6 @@
 using System;
 using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Database;
 using multyPage_XamarinAssign.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,6 +10,8 @@ namespace multyPage_XamarinAssign.Views.Authentication
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class UserEdit : ContentPage
     {
+        DBPetClinic db = new DBPetClinic();
+
         public UserEdit(User user)
         {
             InitializeComponent();
@@ -46,12 +49,12 @@ namespace multyPage_XamarinAssign.Views.Authentication
             User.IsDelete = chkDelete.IsChecked;
             User.IsWrite = chkModify.IsChecked;
             User.IsRead = chkRead.IsChecked;
-            await App.Database.UpdateUserAsync(User);
-            var owner = await App.Database.GetOwnerById(User.UserId);
+            await db.UpdateUserAsync(User);
+            var owner = await db.GetOwnerById(User.UserId);
             owner.OwnerFirstName = User.FirstName;
             owner.OwnerLastName = User.LastName;
             owner.OwnerPhoneNumber = User.Phone;
-            await App.Database.UpdateOwnerAsync(owner);
+            await db.UpdateOwnerAsync(owner);
             await Navigation.PopAsync();
         }
     }

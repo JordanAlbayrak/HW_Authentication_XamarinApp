@@ -9,7 +9,6 @@ namespace multyPage_XamarinAssign.Config
 {
     public partial class App : Application
     {
-        private static DBPetClinic database;
 
         public App()
         {
@@ -18,17 +17,17 @@ namespace multyPage_XamarinAssign.Config
             MainPage = new NavigationPage(new LoginPage());
         }
 
-        public static DBPetClinic Database
-        {
-            get
-            {
-                if (database == null)
-                    database = new DBPetClinic
-                    (Path.Combine(Environment.GetFolderPath
-                        (Environment.SpecialFolder.LocalApplicationData), "databaseV1.3.2.db3"));
-                return database;
-            }
-        }
+        //public static DBPetClinic Database
+        //{
+        //    get
+        //    {
+        //        if (database == null)
+        //            database = new DBPetClinic
+        //            (Path.Combine(Environment.GetFolderPath
+        //                (Environment.SpecialFolder.LocalApplicationData), "databaseV1.3.2.db3"));
+        //        return database;
+        //    }
+        //}
 
         public static User User { get; set; }
         public static Owner Owner { get; set; }

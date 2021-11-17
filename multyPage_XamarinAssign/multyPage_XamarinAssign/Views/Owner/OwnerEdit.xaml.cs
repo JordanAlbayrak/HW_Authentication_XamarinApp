@@ -1,5 +1,6 @@
 using System;
 using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Database;
 using multyPage_XamarinAssign.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,6 +10,8 @@ namespace multyPage_XamarinAssign.Views.Owner
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OwnerEdit : ContentPage
     {
+        DBPetClinic db = new DBPetClinic();
+
         private readonly Models.Owner owner;
 
         public OwnerEdit()
@@ -29,12 +32,12 @@ namespace multyPage_XamarinAssign.Views.Owner
                 owner.OwnerFirstName = TxtOwnerFirstName.Text;
                 owner.OwnerLastName = TxtOwnerLastName.Text;
                 owner.OwnerPhoneNumber = TxtOwnerPhone.Text;
-                await App.Database.UpdateOwnerAsync(owner);
-                user = await App.Database.GetUserById(owner.OwnerId);
+                await db.UpdateOwnerAsync(owner);
+                user = await db.GetUserById(owner.OwnerId);
                 user.FirstName = owner.OwnerFirstName;
                 user.LastName = owner.OwnerLastName;
                 user.Phone = owner.OwnerPhoneNumber;
-                await App.Database.UpdateUserAsync(user);
+                await db.UpdateUserAsync(user);
                 App.Owner = owner;
                 App.User = user;
                 await Navigation.PopAsync();

@@ -1,5 +1,6 @@
 using System;
 using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Database;
 using multyPage_XamarinAssign.Views.Pet;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,6 +10,8 @@ namespace multyPage_XamarinAssign.Views.Owner
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OwnerPage : ContentPage
     {
+        DBPetClinic db = new DBPetClinic();
+
         private Models.Pet _pet1;
         private Models.Pet _pet2;
 
@@ -22,14 +25,14 @@ namespace multyPage_XamarinAssign.Views.Owner
             base.OnAppearing();
             if (App.Owner.PetId1 != 0)
             {
-                _pet1 = await App.Database.GetPetById(App.Owner.PetId1);
+                _pet1 = await db.GetPetById(App.Owner.PetId1);
                 PetName1.Text = _pet1.PetName;
                 PetType1.Text = _pet1.PetType;
             }
 
             if (App.Owner.PetId2 != 0)
             {
-                _pet2 = await App.Database.GetPetById(App.Owner.PetId2);
+                _pet2 = await db.GetPetById(App.Owner.PetId2);
                 PetName2.Text = _pet2.PetName;
                 PetType2.Text = _pet2.PetType;
             }

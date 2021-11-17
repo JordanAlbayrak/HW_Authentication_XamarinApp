@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Database;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,6 +10,8 @@ namespace multyPage_XamarinAssign.Views.Vet
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VetRegistration : ContentPage, INotifyPropertyChanged
     {
+        DBPetClinic db = new DBPetClinic();
+
         private Models.Vet _vet;
 
         //bool isAdded = false;
@@ -38,7 +41,7 @@ namespace multyPage_XamarinAssign.Views.Vet
             if (_vet.IsValid(out message))
             {
                 Console.WriteLine(_vet.FirstName);
-                await App.Database.SaveVetAsync(_vet);
+                await db.SaveVetAsync(_vet);
                 await Navigation.PopAsync();
             }
             else

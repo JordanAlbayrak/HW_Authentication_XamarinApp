@@ -1,5 +1,6 @@
 using System;
 using multyPage_XamarinAssign.Config;
+using multyPage_XamarinAssign.Database;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,6 +9,8 @@ namespace multyPage_XamarinAssign.Views.Pet
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PetEdit : ContentPage
     {
+        DBPetClinic db = new DBPetClinic();
+
         private Models.Pet _pet;
         private readonly int petId;
 
@@ -19,7 +22,7 @@ namespace multyPage_XamarinAssign.Views.Pet
 
         protected override async void OnAppearing()
         {
-            _pet = await App.Database.GetPetById(petId);
+            _pet = await db.GetPetById(petId);
             TxtRegPetName.Text = _pet.PetName;
             TxtRegPetType.Text = _pet.PetType;
         }
@@ -31,7 +34,7 @@ namespace multyPage_XamarinAssign.Views.Pet
             {
                 _pet.PetName = TxtRegPetName.Text;
                 _pet.PetType = TxtRegPetType.Text;
-                await App.Database.UpdatePetAsync(_pet);
+                await db.UpdatePetAsync(_pet);
                 await Navigation.PopAsync();
             }
             else

@@ -1,10 +1,10 @@
-using SQLite;
+
 
 namespace multyPage_XamarinAssign.Models
 {
     public class Owner
     {
-        [PrimaryKey] public int OwnerId { get; set; }
+        public string OwnerId { get; set; }
 
         public string OwnerLastName { get; set; }
         public string OwnerFirstName { get; set; }
