@@ -76,13 +76,20 @@ namespace multyPage_XamarinAssign.Database
 
         public async Task<User> GetUserByUsernamePassword(string username, string password)
         {
-            return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(
-                item => new User
-                {
-                    Username = item.Object.Username,
-                    Password = item.Object.Password,
+            return (await firebaseClient.Child(nameof(User)).OnceAsync<User>()).Select(item => new User
+            {
+                Username = item.Object.Username,
+                Password = item.Object.Password,
+                FirstName = item.Object.FirstName,
+                LastName = item.Object.LastName,
+                Email = item.Object.Email,
+                Phone = item.Object.Phone,
+                Role = item.Object.Role,
+                IsRead = item.Object.IsRead,
+                IsWrite = item.Object.IsWrite,
+                IsDelete = item.Object.IsDelete,
 
-                }).Where<User>(i => i.Username == username && i.Password == password).FirstOrDefault();
+            }).FirstOrDefault(i => i.Username == username && i.Password == password);
 
         }
 
