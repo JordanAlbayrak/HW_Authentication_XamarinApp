@@ -13,13 +13,13 @@ namespace multyPage_XamarinAssign.Views.Vet
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VetPage : ContentPage
     {
-        DBPetClinic db = new DBPetClinic();
+        private DBPetClinic db = new DBPetClinic();
 
         public VetPage()
         {
             InitializeComponent();
         }
-        
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -48,7 +48,45 @@ namespace multyPage_XamarinAssign.Views.Vet
             await db.DeleteVetAsync(id);
             await DisplayAlert("Success", "Vet deleted successfully", "OK");
             await Navigation.PushAsync(new VetPage());
-            
+
+        }
+
+        private async void EditTap_Tapped(object sender, EventArgs e)
+        {
+            //DisplayAlert("Edit", "Wanna edit", "OK");
+            string sID = ((TappedEventArgs) e).Parameter.ToString();
+            var vet = await db.GetVetById(sID);
+            if (vet == null)
+            {
+                await DisplayAlert("Warning", "Vet not found", "OK");
+            }
+            else
+            {
+                vet.VetId = sID;
+                await Navigation.PushModalAsync(new VetEdit(vet));
+                OnAppearing();
+            }
+        }
+
+        private async void DeleteTap_Tapped(object sender, EventArgs e)
+        {
+
+            var response = await DisplayAlert("Delete", "Wanna delete", "Yes", "No");
+            string sID = ((TappedEventArgs) e).Parameter.ToString();
+
+            if (response)
+            {
+                bool isDelete = await db.DeleteVetAsync(sID);
+                if (isDelete)
+                {
+                    await DisplayAlert("Info", "Vet is deleted", "OK");
+                    OnAppearing();
+                }
+                else
+                {
+                    await DisplayAlert("Warning", "Deletion failed", "OK");
+                }
+            }
         }
     }
 }

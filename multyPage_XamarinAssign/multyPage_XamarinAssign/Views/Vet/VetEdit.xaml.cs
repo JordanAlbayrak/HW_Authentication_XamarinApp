@@ -35,7 +35,7 @@ namespace multyPage_XamarinAssign.Views.Vet
             _vet.Email = txtVetRegEmail.Text;
             _vet.Special = txtVetRegSpecial.Text;
             await db.UpdateVetAsync(_vet);
-            await Navigation.PopAsync();
+            await Navigation.PopModalAsync();
 
         }
     }

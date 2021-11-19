@@ -72,6 +72,8 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\delete.png" />
+    <AndroidResource Include="Resources\drawable\edit.png" />
     <AndroidResource Include="Resources\drawable\PetClinic.png" />
     <AndroidResource Include="Resources\drawable\Splash.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
